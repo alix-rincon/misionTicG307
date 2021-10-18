@@ -22,11 +22,10 @@
     <script src="../../js/computer/createComputer.js"></script>
     <script>
         function pageRedirect() {
-          window.location.href = "../../index.html";
-        }      
-    </script> 
+            window.location.href = "../../index.html";
+        }
+    </script>
 </head>
-
 <body>
     <div class="container">
         <layout-menu></layout-menu><br>
@@ -36,44 +35,40 @@
                 <li class="breadcrumb-item active" aria-current="page">Crear Computador</li>
             </ol>
         </nav>
-        <h3>Creación de Computadores</h3>
+        <h4>Creación de Computadores</h4><br>
         <div class="alert alert-success" role="alert" id="alertSuccess" style="display: none;">
             Registro Creado Exitosamente!
         </div>
         <div class="form-outline">
-            <div class="form-row">
+            <div class="form-row">                             
                 <div class="form-group col-md-6">
-                    <label for="id">ID</label>
-                    <input type="number" class="form-control" id="id" placeholder="ID Computador">
-                </div>
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre" minlength="5" maxlength="45">
+                </div>         
                 <div class="form-group col-md-6">
                     <label for="brand">Marca</label>
-                    <input type="text" class="form-control" id="brand" placeholder="Marca">
+                    <input type="text" class="form-control" id="brand" placeholder="Marca" minlength="5" maxlength="45">
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="model">Modelo</label>
-                    <input type="number" class="form-control" id="model" placeholder="Modelo">
-                </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
+                    <label for="name">Año</label>
+                    <input type="number" class="form-control" id="year" placeholder="Año" onKeyDown="if(this.value.length==4) return false;" >
+                </div>                       
+                <div class="form-group col-md-7">
                     <label for="inputState">Categoría</label>
-                    <select id="category_id" class="form-control">
-                        <option selected>Seleccione...</option>
-                        <option value="1">Portátil</option>
-                        <option value="2">PC Escritorio</option>
-                        <option value="2">Servidor</option>
-                    </select>
-                </div>
+                    <select id="category_id" class="form-control" required></select>
+                </div>               
             </div>
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" id="name" placeholder="Nombre">
-            </div>
+            <div class="form-row">
+                <label for="name">Descripción</label>
+                <textarea id="description" placeholder="Descripción Computador" class="md-textarea form-control" rows="3" maxlength="250"></textarea>
+            </div><br>
             <div class="form-row">
                 <div class="form-group col-md-3"></div>
                 <div class="form-group col-md-6">
-                    <button type="button" class="btn btn-primary" onclick="agregar()" id="agregar">Crear Computador</button>
+                    <button type="button" class="btn btn-primary" onclick="agregar()" id="agregar">Crear
+                        Computador</button>
                     <button class="btn btn-outline-secondary" onclick="pageRedirect()" id="closeCreate">Cerrar</button>
                 </div>
                 <div class="form-group col-md-3"></div>

@@ -39,25 +39,25 @@
         <h3>Formulario Registro Cliente</h3>
         <div class="alert alert-success" role="alert" id="alertSuccess" style="display: none;">
             Registro Creado Exitosamente!
+        </div><br>
+        <div class="form-row">            
+            <div class="col-md-6 mb-3">
+                <label for="name"><b>Nombre</b></label>
+                <input type="text" class="form-control" id="name" placeholder="Nombres Completos" maxlength="250">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="Email"><b>Correo</b></label>
+                <input type="email" class="form-control" id="email" placeholder="Correo" required maxlength="45">
+            </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 mb-3">
-                <label for="id">ID</label>
-                <input type="text" class="form-control" id="id" placeholder="ID Cliente" required>
+                <label for="age"><b>Edad</b></label>
+                <input type="number" class="form-control" id="age" placeholder="Edad" onKeyDown="if(this.value.length==2) return false;" >
             </div>
             <div class="col-md-6 mb-3">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" id="name" placeholder="Nombres Completos" required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="age">Edad</label>
-                <input type="number" class="form-control" id="age" placeholder="Edad" required>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <label for="age"><b>Contraseña</b></label>
+                <input type="password" class="form-control" id="password" placeholder="Contraseña" maxlength="45">
             </div>
         </div>
         <div class="form-row">

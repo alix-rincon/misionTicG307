@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrar Reserva</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -19,10 +19,10 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../js/LayoutMenu.js"></script>
-    <script src="../../js/message/createMessage.js"></script>
+    <script src="../../js/reservation/createReservation.js"></script>
     <script>
         function pageRedirect() {
-            window.location.href = "listMessage.html";
+            window.location.href = "listReservation.html";
         }
     </script>
 </head>
@@ -30,14 +30,14 @@
 <body>
     <div class="container">
         <layout-menu></layout-menu><br>
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">getElementById
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/index.html">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="listMessage.html" .html">Listar Mensajes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registrar Mensaje</li>
+                <li class="breadcrumb-item"><a href="listReservation.html" .html">Listar Reservaciones</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registrar Reserva</li>
             </ol>
         </nav>
-        <h3>Formulario Registro Mensaje</h3>
+        <h3>Formulario Registrar Reserva</h3>
         <div class="alert alert-success" role="alert" id="alertSuccess" style="display: none;">
             Registro Creado Exitosamente!
         </div><br>
@@ -52,13 +52,19 @@
             </div>
         </div><br>
         <div class="form-row">
-            <label for="name">Mensaje</label>
-            <textarea class="form-control" id="messagetext" rows="3" maxlength="250"></textarea>
+            <div class="col-md-6 mb-6">
+                <label for="name"><b>Fecha de Inicio</b></label>
+                <input type="date" class="form-control" id="dateBegin" readonly disabled>
+            </div>
+            <div class="col-md-6 mb-6">
+                <label for="name"><b>Fecha Fin</b></label>
+                <input type="date" class="form-control" id="endDate" placeholder="YYYY-MM-DD">
+            </div>
         </div><br>
         <div class="form-row">
             <div class="col-md-3 mb-3"></div>
             <div class="col-md-6 mb-3">
-                <button class="btn btn-primary" onclick="createMessage()">Registrar Mensaje</button>
+                <button class="btn btn-primary" onclick="createReservation()">Registrar Mensaje</button>
                 <button class="btn btn-outline-secondary" onclick="pageRedirect()">Cerrar</button>
             </div>
             <div class="col-md-3 mb-3"></div>

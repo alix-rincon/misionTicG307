@@ -1,24 +1,45 @@
 function agregar() {
     var params = {
-        id: $("#id").val(),
         brand: $("#brand").val(),
-        model: $("#model").val(),
-        category_id: $("#category_id").val(),
-        name: $("#name").val()
+        year: $("#year").val(),
+        category: {id: $("#category_id").val()},
+        name: $("#name").val(),
+        description: $("#description").val()      
     }
     let dataToSend = JSON.stringify(params);
     $.ajax({
-        url:"https://g0cfb8d8089c168-bdrentcar.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/computer/computer",
-        data:dataToSend,
-        type:'POST',
-        contentType:"application/JSON",
-        success: function (response) {
-            $(".container input").val("");
+        url: "http://144.22.242.160:8080/api/Computer/save",
+        data: dataToSend,
+        type: 'POST',
+        contentType: "application/JSON",
+        success: function () {
+            $(".container input,textarea").val("");
             $(".container select").val("Seleccione...");
             $("#alertSuccess").show().delay(3000).fadeOut();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR , textStatus, errorThrown);
+            console.log(jqXHR, textStatus, errorThrown);
         }
     });
 }
+
+function listCategories() {
+    $.ajax({
+        url: "http://144.22.242.160:8080/api/Category/all",
+        type: 'GET',
+        contentType: "application/JSON",
+        success: function (items) {
+            var select = `<option selected>Seleccione...</option>`;
+            for (var i = 0; i < items.length; i++) {
+                select += `
+                    <option value="${items[i].id}">${items[i].name}</option>`;
+            }  
+            $("#category_id").html(select);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });  
+}
+
+listCategories();

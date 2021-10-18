@@ -1,12 +1,13 @@
-function createMessage() {
+function createReservation() {
     var params = {
-        messageText: $("#messagetext").val(),
-        computer: {id: $("#computerId").val()},
-        client: {idClient: $("#clientId").val()} 
+        startDate: $("#dateBegin").val(),
+        devolutionDate: $("#endDate").val(),
+        client: { idClient: $("#clientId").val() },
+        computer: { id: $("#computerId").val() }
     }
     let dataToSend = JSON.stringify(params);
     $.ajax({
-        url: "http://144.22.242.160:8080/api/Message/save",
+        url: "http://144.22.242.160:8080/api/Reservation/save",
         data: dataToSend,
         type: 'POST',
         contentType: "application/JSON",
@@ -20,6 +21,7 @@ function createMessage() {
         }
     });
 }
+
 
 function listComputer() {
     $.ajax({
@@ -58,6 +60,23 @@ function listClient() {
         }
     });
 }
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+$( document ).ready(function() {
+    $('#dateBegin').val(formatDate(new Date().toString()));
+});
 
 listComputer();
 listClient();

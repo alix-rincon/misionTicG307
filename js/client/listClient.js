@@ -1,10 +1,10 @@
 function listClient() {
     $.ajax({
-        url: "https://g0cfb8d8089c168-bdrentcar.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client",
+        url: "http://144.22.242.160:8080/api/Client/all",
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-            listAllClients(response.items);
+            listAllClients(response);
         },
         error: function (xhr, status) {
             console.log(status);
@@ -27,7 +27,7 @@ function listAllClients(items) {
     for (var i = 0; i < items.length; i++) {
         tabla += `<tbody>
                     <tr>
-                        <th scope="row">${items[i].id}</th>
+                        <th scope="row">${items[i].idClient}</th>
                         <td>${items[i].name}</td>
                         <td>${items[i].email}</td>
                         <td>${items[i].age}</td>   
