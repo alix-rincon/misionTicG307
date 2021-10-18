@@ -27,8 +27,8 @@ function listAllClients(items) {
                     <tr>
                         <td>${items[i].name}</td>
                         <td>${items[i].description}</td>
-                        <td style="width:8%"><button type="button" class="btn btn-info btn-sm" onclick="listComputerByCategory(${items[i].id})">Computadores</td>   
-                        <td style="width:8%"><button type="button" class="btn btn-sm btn-outline-dark" onclick="deleteClient(${items[i].id})">Borrar</td>
+                        <td style="width:17%"><button type="button" class="btn btn-info btn-sm" onclick="listComputer(${items[i].id})">Lista Computadores</td>   
+                        <!--<td style="width:8%"><button type="button" class="btn btn-sm btn-outline-dark" onclick="deleteClient(${items[i].id})">Borrar</td>-->
                     </tr>
                 </tbody>
         `;
@@ -38,9 +38,9 @@ function listAllClients(items) {
     $("#listado").html(tabla);
 }
 
-function listComputer() {
+function listComputer(id) {
     $.ajax({
-        url: "http://144.22.242.160:8080/api/Computer/all",
+        url: "http://144.22.242.160:8080/api/Category/computers/"+id,
         type: 'GET',
         contentType: "application/JSON",
         success: function (items) {
@@ -54,24 +54,24 @@ function listComputer() {
 
 function listComputerByCategory(items){
     var tabla = `<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col" colspan=2>Acciones</th>
-                    </tr>
-                </thead>`;
+                    <thead>
+                        <tr>
+                            <th scope="col">Categoria</th> 
+                            <th scope="col">Nombre Computador</th>
+                            <th scope="col">Marca</th>     
+                            <th scope="col">Descripción</th>                                                                    
+                        </tr>
+                    </thead>`;
 
     for (var i = 0; i < items.length; i++) {
         tabla += `<tbody>
                     <tr>
+                        <td>${items[i].category.name}</td>
                         <td>${items[i].name}</td>
-                        <td>${items[i].description}</td>
-                        <td style="width:8%"><button type="button" class="btn btn-info btn-sm" onclick="detailClient(${items[i].id})">Detalle</td>   
-                        <td style="width:8%"><button type="button" class="btn btn-sm btn-outline-dark" onclick="deleteClient(${items[i].id})">Borrar</td>
+                        <td>${items[i].brand}</td>  
+                        <td>${items[i].description}</td>                                                                       
                     </tr>
-                </tbody>
-        `;
+                </tbody>`;
     }
 
     tabla += `</table>`;

@@ -16,23 +16,21 @@ function listAllClients(items) {
     var tabla = `<table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col"># ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Edad</th>
-                        <th scope="col" colspan=2>Acciones</th>
+                        <!--<th scope="col" colspan=2>Acciones</th>-->
                     </tr>
                 </thead>`;
 
     for (var i = 0; i < items.length; i++) {
         tabla += `<tbody>
                     <tr>
-                        <th scope="row">${items[i].idClient}</th>
-                        <td>${items[i].name}</td>
+                        <th scope="row">${items[i].name}</th>
                         <td>${items[i].email}</td>
                         <td>${items[i].age}</td>   
-                        <td style="width:8%"><button type="button" class="btn btn-info btn-sm" onclick="detailClient(${items[i].id})">Detalle</td>   
-                        <td style="width:8%"><button type="button" class="btn btn-sm btn-outline-dark" onclick="deleteClient(${items[i].id})">Borrar</td>
+                        <!--<td style="width:8%"><button type="button" class="btn btn-info btn-sm" onclick="detailClient(${items[i].id})">Detalle</td>   
+                        <td style="width:8%"><button type="button" class="btn btn-sm btn-outline-dark" onclick="deleteClient(${items[i].id})">Borrar</td>-->
                     </tr>
                 </tbody>
         `;
